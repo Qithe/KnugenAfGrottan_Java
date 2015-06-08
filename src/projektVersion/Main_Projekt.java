@@ -63,6 +63,11 @@ public class Main_Projekt {
     
     public static void main(String[] args) {
         
+        CombatMob CP = new CombatMob();
+        
+        
+        
+        /*
         System.out.println("Knugen av Grottan\n");
         
         System.out.print("1: Starta eller 2: info?\n\nVal: ");
@@ -78,6 +83,7 @@ public class Main_Projekt {
         System.out.println("");
         svårighetsgrad();
         spelet();
+        */
     }
     
     public static void info(){

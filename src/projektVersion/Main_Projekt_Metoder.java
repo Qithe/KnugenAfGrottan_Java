@@ -10,35 +10,48 @@ import java.util.ArrayList;
 /**
  *
  * @author erikkarlsson
+ * @edited by Qithe
  */
 public class Main_Projekt_Metoder {
     
-    static ArrayList<Player> saveFiles = new ArrayList<>();
-    static ArrayList<CombatPlayer> combatPlayer = new ArrayList<>();
+    static ArrayList<Mob> saveFiles = new ArrayList<>();
+    static ArrayList<CombatMob> combatMobs = new ArrayList<>();
+    
+    
     
     public static void main(String[] args) {
         saveFiles = addNewPlayer(saveFiles);
-        combatPlayer = readyForCombat(combatPlayer);
+        combatMobs = readyForCombat(combatMobs);
+        
+        Mob Player = new Mob();
+        Mob Varulv = new Mob();
         
     }
     
-    public static ArrayList<Player> addNewPlayer(ArrayList<Player> saveFiles){
+    public static ArrayList<Mob> addNewPlayer(ArrayList<Mob> saveFiles){
         
-        saveFiles.add(new Player(5, 5, 5, 5));
+        saveFiles.add(new Mob(5, 5, 5, 5));
         
         return saveFiles;
     }
-    public static ArrayList<CombatPlayer> readyForCombat(ArrayList<CombatPlayer> combatPlayer){
+    public static ArrayList<Mob> addMobs(ArrayList<Mob> saveFiles){
         
-        combatPlayer.add(new CombatPlayer(saveFiles.get(0).getStrength(), saveFiles.get(0).getVitality(), saveFiles.get(0).getAgility(), saveFiles.get(0).getIntellegence(), saveFiles.get(0).getStrength(), saveFiles.get(0).getVitality(), saveFiles.get(0).getAgility(), saveFiles.get(0).getIntellegence()));
+        saveFiles.add(new Mob(5, 5, 5, 5));
+        saveFiles.add(new Mob(5, 5, 5, 5));
+        saveFiles.add(new Mob(5, 5, 5, 5));
+        return saveFiles;
+    }
+    public static ArrayList<CombatMob> readyForCombat(ArrayList<CombatMob> combatMobs){
         
-        combatPlayer.get(0).damageCalc();
-        combatPlayer.get(0).healthCalc();
-        combatPlayer.get(0).speedCalc();
-        combatPlayer.get(0).spellDmgCalc();
-        combatPlayer.get(0).setMilestones();
+        combatMobs.add(new CombatMob(saveFiles.get(0).getStrength(), saveFiles.get(0).getVitality(), saveFiles.get(0).getAgility(), saveFiles.get(0).getIntellegence(), saveFiles.get(0).getStrength(), saveFiles.get(0).getVitality(), saveFiles.get(0).getAgility(), saveFiles.get(0).getIntellegence()));
         
-        return combatPlayer;
+        combatMobs.get(0).damageCalc();
+        combatMobs.get(0).healthCalc();
+        combatMobs.get(0).speedCalc();
+        combatMobs.get(0).spellDmgCalc();
+        combatMobs.get(0).setMilestones();
+        
+        return combatMobs;
     }
     
     
