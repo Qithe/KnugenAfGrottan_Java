@@ -28,6 +28,7 @@ public class Knugen_GUI_JFrame extends javax.swing.JFrame {
     private void initComponents() {
 
         knugen_GUI_JPanel1 = new projektVersion.Knugen_GUI_JPanel();
+        knugen_GUI_CharacterCreation_JPanel1 = new projektVersion.Knugen_GUI_CharacterCreation_JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -35,11 +36,15 @@ public class Knugen_GUI_JFrame extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(knugen_GUI_JPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(knugen_GUI_JPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(knugen_GUI_CharacterCreation_JPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(knugen_GUI_JPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(knugen_GUI_CharacterCreation_JPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         pack();
@@ -81,6 +86,7 @@ public class Knugen_GUI_JFrame extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private projektVersion.Knugen_GUI_CharacterCreation_JPanel knugen_GUI_CharacterCreation_JPanel1;
     private projektVersion.Knugen_GUI_JPanel knugen_GUI_JPanel1;
     // End of variables declaration//GEN-END:variables
 }

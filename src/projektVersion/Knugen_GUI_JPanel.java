@@ -128,11 +128,31 @@ public class Knugen_GUI_JPanel extends javax.swing.JPanel {
         g.drawLine(250, 250, 330, 230);
         
         //Ritar Handtag
-        g.drawLine(315, 245, 345, 220);
         g.drawLine(310, 240, 340, 215);
+        g.drawLine(315, 245, 345, 220);
         g.drawOval(305, 240, 10, 10);
         
+        //Ritar Skydd
+        //Vänstra
+        g.drawLine(340, 215, 332, 200);
+        g.drawLine(332, 200, 347, 207);
+        //Högra
+        g.drawLine(345, 220, 360, 226);
+        g.drawLine(360, 227, 354, 214);
+        //IhopThingy
+        g.drawLine(347, 207, 354, 214);
+        g.drawLine(340, 215, 345, 220);
         
+        //Ritar Klingan
+        g.drawLine(347, 207, 417, 137);
+        g.drawLine(354, 214, 424, 144);
+        
+        //Ritar Spetsen
+        g.drawLine(417, 137, 425, 136);
+        g.drawLine(424, 144, 425, 136);
+        
+        //Ritar den fräcka mellanskenan i klingan
+        g.drawLine(425, 136, 354, 207);
     }
     
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed

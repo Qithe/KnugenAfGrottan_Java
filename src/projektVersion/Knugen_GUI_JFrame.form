@@ -23,17 +23,24 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Component id="knugen_GUI_JPanel1" min="-2" max="-2" attributes="0"/>
+          <Group type="102" attributes="0">
+              <Component id="knugen_GUI_JPanel1" min="-2" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
+              <Component id="knugen_GUI_CharacterCreation_JPanel1" min="-2" max="-2" attributes="0"/>
+          </Group>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
           <Component id="knugen_GUI_JPanel1" min="-2" max="-2" attributes="0"/>
+          <Component id="knugen_GUI_CharacterCreation_JPanel1" min="-2" max="-2" attributes="0"/>
       </Group>
     </DimensionLayout>
   </Layout>
   <SubComponents>
     <Component class="projektVersion.Knugen_GUI_JPanel" name="knugen_GUI_JPanel1">
+    </Component>
+    <Component class="projektVersion.Knugen_GUI_CharacterCreation_JPanel" name="knugen_GUI_CharacterCreation_JPanel1">
     </Component>
   </SubComponents>
 </Form>

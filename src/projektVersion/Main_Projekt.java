@@ -45,7 +45,7 @@ public class Main_Projekt {
     
     static int strength, vitality, agility, intellegence;
     
-    static int svårighetsgrad, attributPoäng, rumNr;
+    static int svårighetsgrad, attributPoäng, rumNr, mobMot;
     
     static String mob1, mob2, mob3, mob4, mob5, mob6, mob7, mob8, mob9, mob10, svårighetsgradString;
     
@@ -117,6 +117,7 @@ public class Main_Projekt {
             else{
                 System.out.print("Du valde: " + svårighetsgradString + ". Är du nöjd med detta?\n1 : Ja\n2 : Nej\n\nVal:");
                 int klar = scanner.nextInt();
+                System.out.println("");
                 if(klar == 2){
                     fortsätt = true;
                 }
@@ -517,22 +518,31 @@ public class Main_Projekt {
     public static void spelet(){
         System.out.println("Nu ska du gå in i grottan.\n");
         //mobVal(); ska in senare
+        statsUtdelning();
+        grottIngång();
+    }
+    
+    public static void statsUtdelning(){
         mobSlumpning();
+        playerStats();
+        varulv();
+        trollKarl();
+    }
+    
+    public static void playerStats(){
         playerSpeedCur = agility * 1;
         playerHpCur = vitality * 3;
         playerDmgCur = strength * 1;
         playerSpeedStart = agility * 1;
         playerHpStart = vitality * 3;
         playerDmgStart = strength * 1;
-        varulv();
-        trollKarl();
-        grottIngång();
     }
     
     public static void mobSlumpning(){
+        int monsterNummer;
         
         for(int i = 0 ; i < 10 ; i++){
-            int monsterNummer = random.nextInt(8);
+            monsterNummer = random.nextInt(8);
             if(monsterNummer == 0 || monsterNummer == 1 || monsterNummer == 2 || monsterNummer == 3){
                 mobType [i] = "varulv";
             }
@@ -596,14 +606,14 @@ public class Main_Projekt {
             encounter = false;
         }
         else{
-            
+            System.out.println("You crashed sonny :/");
         }
         
         if(encounter){
             boolean klar = false;
         
         while(!klar){
-            int rNumberTxt = random.nextInt(10);
+            int rNumberTxt = random.nextInt(9);
             klar = mobEncounter(rNumberTxt);
         }
             attackModule_Start();
@@ -654,7 +664,7 @@ public class Main_Projekt {
             hittaFöremål = random.nextInt(2);
         }
         
-        if(hittaFöremål == 1 || hittaFöremål == 2){
+        if(hittaFöremål == 0 || hittaFöremål == 2 ){
             föremål = "en yxa (som inte gör något ännu tyvärr)";
         }
         else{
@@ -666,7 +676,8 @@ public class Main_Projekt {
     }
     
     public static void attackModule_Start(){
-        System.out.println("Striden Startar!\nEn vild "+mobType [1]+" står framför dig!\n\n");
+        mobMot = random.nextInt(9);
+        System.out.println("Striden Startar!\nEn vild "+mobType [mobMot]+" står framför dig!\n\n");
         if (playerHpCur >= playerHpStart){
             playerHpCur = playerHpStart;
         }
@@ -675,7 +686,7 @@ public class Main_Projekt {
     
     public static void attackModule_Stats(){
         System.out.println("\n\n\n ////////|||\\\\\\\\\\\\\\\\");
-        System.out.println(" |||STATS:\n\n |||Din hp: "+playerHpCur+"/"+playerHpStart+"\n |||"+mobType [1]+" hp: "+mobHpCur+"/"+mobHpStart);
+        System.out.println(" |||STATS:\n\n |||Din hp: "+playerHpCur+"/"+playerHpStart+"\n |||"+mobType [mobMot]+" hp: "+mobHpCur+"/"+mobHpStart);
         System.out.println(" \\\\\\\\\\\\\\\\|||//////// \n\n\n");
         attackModule_Menu_Action();
     }
@@ -708,36 +719,36 @@ public class Main_Projekt {
     }
     public static void attackModule_Attack_PlayerFirst(){
         mobHpCur = mobHpCur - playerDmgCur;
-        System.out.println("Du svingar dit svärd mot "+mobType [1]+" och gör "+playerDmgCur+" Skada\n\n");
+        System.out.println("Du svingar dit svärd mot "+mobType [mobMot]+" och gör "+playerDmgCur+" Skada\n\n");
             if(mobHpCur <= 0){
                 attackModule_Victory();
             } 
             else if (mobHpCur > 0) {
                 playerHpCur = playerHpCur - mobDmgCur;
                 if(playerHpCur>0){
-                    System.out.println(mobType [1]+" Attakerar dig och gör "+mobDmgCur+" skada på dig\n\n");
+                    System.out.println(mobType [mobMot]+" Attakerar dig och gör "+mobDmgCur+" skada på dig\n\n");
                     attackModule_Menu_Action();
                 } 
                 else if (playerHpCur <= 0){
-                    System.out.println(mobType [1]+" Attakerar dig och gör "+mobDmgCur+" skada på dig\n\n");
+                    System.out.println(mobType [mobMot]+" Attakerar dig och gör "+mobDmgCur+" skada på dig\n\n");
                     attackModule_GameOver();
                 }
             }
     }
     public static void attackModule_Attack_MobFirst(){
         playerHpCur = playerHpCur - mobDmgCur;
-        System.out.println(mobType [1]+" Attakerar dig och gör "+mobDmgCur+" skada på dig\n\n");
+        System.out.println(mobType [mobMot]+" Attakerar dig och gör "+mobDmgCur+" skada på dig\n\n");
         if(playerHpCur<=0){
         attackModule_GameOver();  
         } 
         else if (playerHpCur>0){
             mobHpCur = mobHpCur - playerDmgCur;
             if(mobHpCur <= 0){
-                System.out.println("Du svingar dit svärd mot "+mobType [1]+" och gör "+playerDmgCur+" Skada\n\n");
+                System.out.println("Du svingar dit svärd mot "+mobType [mobMot]+" och gör "+playerDmgCur+" Skada\n\n");
                 attackModule_Victory();
             }
             else if(mobHpCur > 0){
-                System.out.println("Du svingar dit svärd mot "+mobType [1]+" och gör "+playerDmgCur+" Skada\n\n");
+                System.out.println("Du svingar dit svärd mot "+mobType [mobMot]+" och gör "+playerDmgCur+" Skada\n\n");
                 attackModule_Menu_Action();
             }
         }
@@ -752,7 +763,7 @@ public class Main_Projekt {
         System.out.println("Din hälsa ökade med: "+playerHpStart/10+"\n\n");
         
         playerHpCur = playerHpCur - mobDmgCur;
-        System.out.println(mobType [1]+"Attakerar dig och gör "+mobDmgCur/2+" skada på dig\n\n");
+        System.out.println(mobType [mobMot]+"Attakerar dig och gör "+mobDmgCur/2+" skada på dig\n\n");
         
         attackModule_Menu_Action();
         
