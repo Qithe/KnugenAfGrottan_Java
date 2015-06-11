@@ -23,8 +23,7 @@ public class Main_Projekt_Metoder {
         saveFiles = addNewPlayer(saveFiles);
         combatMobs = readyForCombat(combatMobs);
         
-        Mob Player = new Mob();
-        Mob Varulv = new Mob();
+        
         
     }
     
