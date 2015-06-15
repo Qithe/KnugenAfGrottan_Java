@@ -9,6 +9,7 @@ public class Main_Projekt {
     static int playerSpeedStart = 10, mobSpeedStart = 12, mobHpStart = 26,  playerHpStart = 100, playerDmgStart = 3,mobDmgStart = 12;
     static int playerSpeedCur = playerSpeedStart, mobSpeedCur = mobSpeedStart, mobHpCur = mobHpStart,  playerHpCur = playerHpStart, playerDmgCur = 3,mobDmgCur = mobDmgStart;
     static int score;
+    static int turns;
     
     /*
     static int playerLevel=0, bowSkill=0, XBowSkill=0, stoneSkill=0, slingStoneSkill, throwKnifeSkill, throwAxeSkill, throwPotionSkill;
@@ -49,8 +50,8 @@ public class Main_Projekt {
     
     static String mob1, mob2, mob3, mob4, mob5, mob6, mob7, mob8, mob9, mob10, svårighetsgradString;
     
-    static int mobEncStrength [] = new int[3], mobEncVitality [] = new int[3], mobEncAgility [] = new int[3], 
-            mobEncIntellegence [] = new int[3], rum [] = new int[1000];
+    static int mobEncStrength [] = new int[10], mobEncVitality [] = new int[10], mobEncAgility [] = new int[10], 
+            mobEncIntellegence [] = new int[10], rum [] = new int[1000];
     
     static String mobType [] = new String[10];
     
@@ -63,11 +64,11 @@ public class Main_Projekt {
     
     public static void main(String[] args) {
         
-        CombatMob CP = new CombatMob();
         
         
         
-        /*
+        
+        
         System.out.println("Knugen av Grottan\n");
         
         System.out.print("1: Starta eller 2: info?\n\nVal: ");
@@ -83,7 +84,7 @@ public class Main_Projekt {
         System.out.println("");
         svårighetsgrad();
         spelet();
-        */
+        
     }
     
     public static void info(){
@@ -681,12 +682,15 @@ public class Main_Projekt {
         grottIngång();
     }
     
+    
+    
     public static void attackModule_Start(){
         mobMot = random.nextInt(9);
         System.out.println("Striden Startar!\nEn vild "+mobType [mobMot]+" står framför dig!\n\n");
         if (playerHpCur >= playerHpStart){
             playerHpCur = playerHpStart;
         }
+        turns = 0;
         attackModule_Menu_Action();
     }   
     
@@ -717,6 +721,7 @@ public class Main_Projekt {
             }
     }
     public static void attackModule_Attack(){
+        turns++;
         if(playerSpeedCur > mobSpeedCur){
             attackModule_Attack_PlayerFirst();
         } else if (playerSpeedCur < mobSpeedCur) {
@@ -761,6 +766,7 @@ public class Main_Projekt {
     }
     
     public static void attackModule_Fortify(){
+        turns++;
         System.out.println("Du reser din sköld som reducerar monstrenas attack och ger dig tid att återhämta dig\n\n");
         playerHpCur += (playerHpStart/10);
         if (playerHpCur >= playerHpStart){
@@ -770,7 +776,9 @@ public class Main_Projekt {
         
         playerHpCur = playerHpCur - mobDmgCur;
         System.out.println(mobType [mobMot]+"Attakerar dig och gör "+mobDmgCur/2+" skada på dig\n\n");
-        
+        if(playerHpCur<=0){
+        attackModule_GameOver();
+        }
         attackModule_Menu_Action();
         
     }
@@ -783,12 +791,28 @@ public class Main_Projekt {
         attackModule_Menu_Action();
     }
     public static void attackModule_Victory(){
-        System.out.println("Grattis, du vann!! Men du vet inte vad som väntar runt krönet\n\n");
-        score = score + 10;
+        int addPoints= Points(turns);
+        score = score + addPoints;
+        System.out.println("Grattis, du vann!! Du fick "+addPoints+" Poäng! Men du vet inte vad som väntar runt krönet\n\n");
         grottIngång();
     }
     
     public static void attackModule_GameOver(){
         System.out.println("Du ligger på marken, det svartnar för ögonen. Du tänker: 'Jag förlorade?'\nDin poäng var: "+score+"\n\n");
+    }
+    public static int Points(int algoritmTurns){
+        int points;
+            if(algoritmTurns>=8){
+                points = 2;
+            
+        }else{
+            if(algoritmTurns == 0){
+                points=10;
+            }else{
+                points=Points(algoritmTurns-1)-1;
+            }
+        }
+        
+        return points;
     }
 }
