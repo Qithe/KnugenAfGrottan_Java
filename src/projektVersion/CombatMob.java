@@ -5,19 +5,23 @@
  */
 package projektVersion;
 
+import java.util.Scanner;
+
 /**
  *
  * @author erikkarlsson
  */
-public class CombatPlayer {
+public class CombatMob {
     private int damage, health, speed, spellDmg;
     private int strengthMileStone, vitalityMileStone, agilityMileStone, intellegenceMileStone;
     
-    CombatPlayer(){
+    //Default constructor
+    CombatMob(){
         
     }
     
-    CombatPlayer(int damage, int health, int speed, int spellDmg, int strengthMileStone,int vitalityMileStone,int agilityMileStone,int intellegenceMileStone){
+    //cuns
+    CombatMob(int damage, int health, int speed, int spellDmg, int strengthMileStone,int vitalityMileStone,int agilityMileStone,int intellegenceMileStone){
         this.damage = damage;
         this.health = health;
         this.speed = speed;
@@ -28,6 +32,7 @@ public class CombatPlayer {
         this.intellegenceMileStone = intellegenceMileStone;
     }
     
+    //getters
     public int getDamage(){
         return this.damage;
     }
@@ -53,6 +58,7 @@ public class CombatPlayer {
         return this.intellegenceMileStone;
     }
     
+    //setter
     public void setDamage(int damage){
         this.damage = damage;
     }
@@ -78,6 +84,7 @@ public class CombatPlayer {
         this.intellegenceMileStone = intellegenceMileStone;
     }
     
+    //other
     public void damageCalc(){
         this.damage = (int)(damage*1.5);
     }

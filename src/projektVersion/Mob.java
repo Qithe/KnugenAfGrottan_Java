@@ -9,14 +9,14 @@ package projektVersion;
  *
  * @author erikkarlsson
  */
-public class Player {
+public class Mob {
     private int strength, vitality, intellegence, agility;
     
-    Player(){
+    Mob(){
         
     }
     
-    Player(int strength, int vitality, int intellegence, int agility){
+    Mob(int strength, int vitality, int intellegence, int agility){
         this.strength = strength;
         this.vitality = vitality;
         this.intellegence = intellegence;
