@@ -68,7 +68,7 @@ public class Main_Projekt {
         
         
         
-        
+
         System.out.println("Knugen av Grottan\n");
         
         System.out.print("1: Starta eller 2: info?\n\nVal: ");
@@ -620,7 +620,7 @@ public class Main_Projekt {
             boolean klar = false;
         
         while(!klar){
-            int rNumberTxt = random.nextInt(9);
+            int rNumberTxt = random.nextInt(10);
             klar = mobEncounter(rNumberTxt);
         }
             attackModule_Start();
@@ -685,7 +685,7 @@ public class Main_Projekt {
     
     
     public static void attackModule_Start(){
-        mobMot = random.nextInt(9);
+        mobMot = random.nextInt(10);
         System.out.println("Striden Startar!\nEn vild "+mobType [mobMot]+" står framför dig!\n\n");
         if (playerHpCur >= playerHpStart){
             playerHpCur = playerHpStart;
