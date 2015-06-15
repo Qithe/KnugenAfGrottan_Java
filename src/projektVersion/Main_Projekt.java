@@ -49,8 +49,8 @@ public class Main_Projekt {
     
     static String mob1, mob2, mob3, mob4, mob5, mob6, mob7, mob8, mob9, mob10, svårighetsgradString;
     
-    static int mobEncStrength [] = new int[3], mobEncVitality [] = new int[3], mobEncAgility [] = new int[3], 
-            mobEncIntellegence [] = new int[3], rum [] = new int[1000];
+    static int mobEncStrength [] = new int[10], mobEncVitality [] = new int[10], mobEncAgility [] = new int[10], 
+            mobEncIntellegence [] = new int[10], rum [] = new int[1000];
     
     static String mobType [] = new String[10];
     
@@ -63,11 +63,10 @@ public class Main_Projekt {
     
     public static void main(String[] args) {
         
-        CombatMob CP = new CombatMob();
         
         
         
-        /*
+        
         System.out.println("Knugen av Grottan\n");
         
         System.out.print("1: Starta eller 2: info?\n\nVal: ");
@@ -83,7 +82,7 @@ public class Main_Projekt {
         System.out.println("");
         svårighetsgrad();
         spelet();
-        */
+        
     }
     
     public static void info(){
@@ -619,7 +618,7 @@ public class Main_Projekt {
             boolean klar = false;
         
         while(!klar){
-            int rNumberTxt = random.nextInt(9);
+            int rNumberTxt = random.nextInt(10);
             klar = mobEncounter(rNumberTxt);
         }
             attackModule_Start();
@@ -682,7 +681,7 @@ public class Main_Projekt {
     }
     
     public static void attackModule_Start(){
-        mobMot = random.nextInt(9);
+        mobMot = random.nextInt(10);
         System.out.println("Striden Startar!\nEn vild "+mobType [mobMot]+" står framför dig!\n\n");
         if (playerHpCur >= playerHpStart){
             playerHpCur = playerHpStart;
